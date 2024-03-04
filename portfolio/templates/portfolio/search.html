@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Lancelot - Búsqueda de portafolios</title>
+  <meta lang="es">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+</head>
+
+<body>
+  {% if query %}
+    <h1>Resultados que contienen "{{ query }}"</h1>
+    {% for portfolio in results %}
+      <h4>
+        Persona X
+      </h4>
+      <p>{{ portfolio.field_of_work }}</p>
+      <p>{{ portfolio.work_experience|linebreaksbr }}</p>
+      <p>{{ portfolio.projects|linebreaksbr }}</p>
+    {% empty %}
+      <p>No hay resultados para su búsqueda.</p>
+    {% endfor %}
+  {% else %}
+    <h1>Buscar portafolios</h1>
+    <form method="get">
+      {{ form.as_p }}
+      <input type="submit" value="Buscar">
+    </form>
+  {% endif %}
+</body>
+
+</html>
