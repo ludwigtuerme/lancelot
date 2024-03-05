@@ -28,3 +28,18 @@ def portfolio_search(request):
                  "query": query,
                  "results": results,
                 })
+
+def search_category(request, category):
+  form = SearchForm()
+  query = Portfolio.WorkAreas[category].label
+  results = Portfolio.objects.filter(field_of_work=category)
+
+  return render(
+    request,
+    "portfolio/search.html",
+    {
+      "form": form,
+      "query": query,
+      "results": results,
+    }
+  )
