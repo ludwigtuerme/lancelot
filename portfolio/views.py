@@ -1,5 +1,5 @@
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from .forms import SearchForm
 from .models import Portfolio
 
@@ -31,7 +31,18 @@ def portfolio_search(request):
 
 def search_category(request, category):
   form = SearchForm()
-  query = Portfolio.WorkAreas[category].label
+  query = None
+
+  # Linear-time lookup... But it's not a bottleneck yet.
+  from django.utils.text import slugify
+  for area in Portfolio.WorkAreas:
+    if slugify(area.label) == category:
+      category = area
+      query = category.label
+
+  if query is None:
+    return HttpResponse(f"'{category}' no es una categoría válida.")
+
   results = Portfolio.objects.filter(field_of_work=category)
 
   return render(
