@@ -13,7 +13,7 @@
       <h4>
         Persona X
       </h4>
-      <p>{{ portfolio.field_of_work }}</p>
+      <p>{{ portfolio.get_field_of_work_display }}</p>
       <p>{{ portfolio.work_experience|linebreaksbr }}</p>
       <p>{{ portfolio.projects|linebreaksbr }}</p>
     {% empty %}
