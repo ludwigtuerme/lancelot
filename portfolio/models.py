@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.postgres.indexes import GinIndex
 from django.utils.translation import gettext_lazy as _
+from django.utils.text import slugify
+from django.utils.functional import cached_property
 
 class Portfolio(models.Model):
   class WorkAreas(models.TextChoices):
@@ -21,6 +23,10 @@ class Portfolio(models.Model):
     choices=WorkAreas,
     default=WorkAreas.OTHER,
   )
+
+  @cached_property
+  def field_of_work_as_slug(self):
+    return slugify(Portfolio.WorkAreas[self.field_of_work].label)
 
   work_experience = models.TextField(
     max_length=1000,
