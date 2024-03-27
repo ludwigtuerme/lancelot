@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="container text-center">
+<p class="fs-1" style="color: #00a400;">Encuentra al freelancer que necesitas</p>
+<div class="container-sm fs-4 text-start py-3">
+<div class="row align-items-center row-gap-3">
+<div class="col-md">
+<img src="{% static 'undraw_undraw_businessman_e7v0_qrld.svg' %}" style="width: 100%; height: auto; max-width: 30vw;">
+</div>
+<div class="col-md">
+<div class="row p-2">
+Busca al freelancer que necesitas por su experiencia laboral, proyectos, o por quién es.
+</div>
+<div class="row p-2">
+Contacta al freelancer que te convenció a través de su método de contacto preferido.
+</div>
+<div class="row p-2">
+Reporta perfiles de freelancers que te parezcan sospechosos.
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

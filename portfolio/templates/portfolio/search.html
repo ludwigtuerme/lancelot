@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<head>
-  <title>Lancelot - Búsqueda de portafolios</title>
-  <meta lang="es">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
-</head>
+{% block title %}Búsqueda de portafolios{% endblock title %}
 
-<body>
+{% block content %}
   {% if query %}
     <h1>Resultados que contienen "{{ query }}"</h1>
     {% for portfolio in results %}
@@ -26,6 +22,4 @@
       <input type="submit" value="Buscar">
     </form>
   {% endif %}
-</body>
-
-</html>
+{% endblock content %}
